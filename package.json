@@ -1,0 +1,22 @@
+{
+  "name": "sports_arbitrage-scraper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "worker.js",
+  "bin": {
+    "sports_arbitrage-scraper": "covers.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eacraft13/sports_arbitrage-scraper.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eacraft13/sports_arbitrage-scraper/issues"
+  },
+  "homepage": "https://github.com/eacraft13/sports_arbitrage-scraper#readme"
+}
