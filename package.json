@@ -18,5 +18,12 @@
   "bugs": {
     "url": "https://github.com/eacraft13/sports_arbitrage-scraper/issues"
   },
-  "homepage": "https://github.com/eacraft13/sports_arbitrage-scraper#readme"
+  "homepage": "https://github.com/eacraft13/sports_arbitrage-scraper#readme",
+  "dependencies": {
+    "async": "^1.5.0",
+    "jsdom": "^7.2.1",
+    "moment": "^2.10.6",
+    "moment-timezone": "^0.4.1",
+    "request": "^2.67.0"
+  }
 }
