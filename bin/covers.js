@@ -28,7 +28,7 @@ module.exports = function(callback) {
                         sport: key,
                         teams: {
                             away: $(this).find('.team_away > strong').text().trim(),
-                            home: $(this).find('.team_home > strong').text().trim()
+                            home: $(this).find('.team_home > strong').text().trim().substr(1)
                         },
                         time: moment.tz(time, 'ddd, MMM D h:mm A', 'America/New_York').unix(),
                         lines: []
@@ -48,8 +48,8 @@ module.exports = function(callback) {
                             match.lines.push({
                                 source: indexToSource(i) + ' (via Covers)',
                                 odds: {
-                                    away: { american: away },
-                                    home: { american: home }
+                                    away: { american: +away },
+                                    home: { american: +home }
                                 }
                             });
                     });
