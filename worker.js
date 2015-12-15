@@ -7,7 +7,7 @@ var slug    = require('slug');
 
 
 covers(function(err, matches) {
-    var url = 'http://www.delphi.website';
+    var url = 'http://api.delphi.website';
 
     async.each(matches, function(match, callback) {
         request({
@@ -30,5 +30,7 @@ covers(function(err, matches) {
                 callback(err);
             });
         });
+    }, function(err) {
+        if (err) throw err;
     });
 });
