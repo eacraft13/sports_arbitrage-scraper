@@ -11,9 +11,9 @@ module.exports = function(config, callback) {
     var url = config.url;
 
     scraper(coversConfig, function(err, matches) {
+        if (err) return callback(err);
 
         async.each(matches, function(match, callback) {
-
             // Create matches
             request({
                 uri: url + '/matches',
@@ -21,8 +21,8 @@ module.exports = function(config, callback) {
                 body: _.pick(match, [ 'sport', 'teams', 'time' ]),
                 json: true
             }, function(err, data) {
+                if (err) return callback(err);
                 var id = [ slug(match.sport).toLowerCase(), slug(match.teams.away).toLowerCase(), slug(match.teams.home).toLowerCase(), +match.time ];
-
                 // Create lines
                 async.each(match.lines, function(line, callback) {
                     request({
@@ -36,9 +36,7 @@ module.exports = function(config, callback) {
                 }, function(err) {
                     callback(err);
                 }); // end lines
-
             }); // end matches
-
 
         }, function(err) {
             callback(err);

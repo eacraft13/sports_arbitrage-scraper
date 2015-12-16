@@ -3,7 +3,9 @@ var covers = require('./bin/covers');
 
 
 
-covers(config, function(err) {
-    if (err) throw err;
-    console.log('Successfully scraped covers...');
-});
+setInterval(function() {
+    covers(config, function(err) {
+        if (err) console.log(err);
+        else console.log('Successfully scraped covers...');
+    });
+}, config.timer);
