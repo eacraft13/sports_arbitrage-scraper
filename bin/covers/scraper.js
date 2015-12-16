@@ -40,7 +40,8 @@ module.exports = function(config, callback) {
                             return;
                         else
                             match.lines.push({
-                                source: url,
+                                source: indexToSource(i) + ' (via Covers)',
+                                url: url,
                                 odds: {
                                     away: { american: +away },
                                     home: { american: +home }
