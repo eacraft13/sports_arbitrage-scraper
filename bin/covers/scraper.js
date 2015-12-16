@@ -5,22 +5,16 @@ var request = require('request');
 
 
 
-module.exports = function(callback) {
+module.exports = function(config, callback) {
     var matches = [];
-    var urls = {
-        nfl   : 'http://www.covers.com/odds/football/nfl-moneyline-odds.aspx',
-        ncaaf : 'http://www.covers.com/odds/football/college-football-moneyline-odds.aspx',
-        nba   : 'http://www.covers.com/odds/basketball/nba-moneyline-odds.aspx',
-        nhl   : 'http://www.covers.com/odds/hockey/nhl-odds.aspx',
-        ncaab : 'http://www.covers.com/odds/basketball/college-basketball-moneyline-odds.aspx'
-    };
+    var urls    = config.urls;
 
     async.forEachOf(urls, function(url, key, callback) {
         jsdom.env(
             url,
             ['https://code.jquery.com/jquery-2.1.4.min.js'],
             function(err, window) {
-                var $       = window.$;
+                var $ = window.$;
 
                 $('table > tbody > tr.bg_row').each(function() {
                     var time = $(this).find('.odds_table_row').first().find('.team_away').text().trim() + ' ' + $(this).find('.odds_table_row').first().find('.team_home').text().trim();
@@ -46,7 +40,7 @@ module.exports = function(callback) {
                             return;
                         else
                             match.lines.push({
-                                source: indexToSource(i) + ' (via Covers)',
+                                source: url,
                                 odds: {
                                     away: { american: +away },
                                     home: { american: +home }
